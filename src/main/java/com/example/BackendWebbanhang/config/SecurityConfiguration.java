@@ -50,7 +50,7 @@ public class SecurityConfiguration {
                         authz -> authz
                                 // 1. Public APIs: Ai cũng vào được
                                 .requestMatchers("/", "/api/v1/auth/login", "/api/v1/auth/refresh",
-                                        "/api/v1/auth/register")
+                                        "/api/v1/auth/register", "/storage/**")
                                 .permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/v1/products/**").permitAll() // Xem sp là public
 
@@ -58,8 +58,6 @@ public class SecurityConfiguration {
                                 .requestMatchers("/api/v1/roles/**").hasAuthority("ROLE_ADMIN")
 
                                 // 3. User Management:
-                                // Ví dụ: Admin mới được lấy danh sách tất cả User, hoặc tạo mới User từ Admin
-                                // panel
                                 .requestMatchers(HttpMethod.GET, "/api/v1/users").hasAuthority("ROLE_ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/api/v1/users").hasAuthority("ROLE_ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasAuthority("ROLE_ADMIN")

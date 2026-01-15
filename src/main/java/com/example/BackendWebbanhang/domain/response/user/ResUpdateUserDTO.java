@@ -17,8 +17,6 @@ public class ResUpdateUserDTO {
     private String address;
     private int age;
     private Instant updatedAt;
-
-    // Bổ sung field role
     private RoleUser role;
 
     @Getter

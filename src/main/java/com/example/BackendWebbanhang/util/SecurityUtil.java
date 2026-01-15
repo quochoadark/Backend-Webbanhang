@@ -54,19 +54,17 @@ public class SecurityUtil {
         // 1. Lấy thông tin Role từ DTO để phân quyền thực tế
         List<String> listAuthority = new ArrayList<>();
         if (dto != null && dto.getRole() != null) {
-            // Ví dụ: Database là "ADMIN" -> nạp vào token là "ROLE_ADMIN"
             listAuthority.add("ROLE_" + dto.getRole().getName());
         }
 
-        // @formatter:off
         JwtClaimsSet claims = JwtClaimsSet.builder()
-            .issuedAt(now)
-            .expiresAt(validity)
-            .subject(email)
-            .claim("user", dto)
-            // Lưu vào claim "role" để SecurityConfiguration có thể đọc được
-            .claim("role", listAuthority) 
-            .build();
+                .issuedAt(now)
+                .expiresAt(validity)
+                .subject(email)
+                .claim("user", dto)
+                // Lưu vào claim "role" để SecurityConfiguration có thể đọc được
+                .claim("role", listAuthority)
+                .build();
 
         JwsHeader jwsHeader = JwsHeader.with(JWT_ALGORITHM).build();
         return this.jwtEncoder.encode(JwtEncoderParameters.from(jwsHeader, claims)).getTokenValue();
@@ -76,13 +74,12 @@ public class SecurityUtil {
         Instant now = Instant.now();
         Instant validity = now.plus(this.refreshTokenExpiration, ChronoUnit.SECONDS);
 
-        // @formatter:off
         JwtClaimsSet claims = JwtClaimsSet.builder()
-            .issuedAt(now)
-            .expiresAt(validity)
-            .subject(email)
-            .claim("user", dto.getUser())
-            .build();
+                .issuedAt(now)
+                .expiresAt(validity)
+                .subject(email)
+                .claim("user", dto.getUser())
+                .build();
 
         JwsHeader jwsHeader = JwsHeader.with(JWT_ALGORITHM).build();
         return this.jwtEncoder.encode(JwtEncoderParameters.from(jwsHeader, claims)).getTokenValue();
@@ -126,7 +123,7 @@ public class SecurityUtil {
     public static Optional<String> getCurrentUserJWT() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return Optional.ofNullable(securityContext.getAuthentication())
-            .filter(authentication -> authentication.getCredentials() instanceof String)
-            .map(authentication -> (String) authentication.getCredentials());
+                .filter(authentication -> authentication.getCredentials() instanceof String)
+                .map(authentication -> (String) authentication.getCredentials());
     }
 }

@@ -36,7 +36,6 @@ public class UserService {
             if (r != null) {
                 user.setRole(r);
             } else {
-                // Nếu ID role không tồn tại, gán mặc định là USER
                 user.setRole(this.roleService.fetchByName("USER"));
             }
         } else {

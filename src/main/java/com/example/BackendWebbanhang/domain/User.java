@@ -46,8 +46,6 @@ public class User {
 
     @Column(columnDefinition = "MEDIUMTEXT")
     private String refreshToken;
-
-    // Quan hệ N-1: Nhiều user thuộc về 1 role
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;

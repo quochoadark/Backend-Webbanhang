@@ -18,7 +18,6 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    // Kiểm tra xem tên Role đã tồn tại chưa (dùng khi tạo mới)
     public boolean existsByName(String name) {
         return this.roleRepository.existsByName(name);
     }

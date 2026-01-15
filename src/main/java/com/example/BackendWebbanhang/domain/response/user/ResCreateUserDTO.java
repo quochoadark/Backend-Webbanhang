@@ -17,7 +17,7 @@ public class ResCreateUserDTO {
     private int age;
     private Instant createdAt;
 
-    private RoleUser role; // Thêm thông tin role trả về
+    private RoleUser role;
 
     @Getter
     @Setter

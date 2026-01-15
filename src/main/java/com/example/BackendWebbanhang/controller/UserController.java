@@ -79,7 +79,6 @@ public class UserController {
                 .body(this.userService.convertToResUserDTO(fetchUser));
     }
 
-    // fetch all users
     @GetMapping("/users")
     @ApiMessage("fetch all users")
     public ResponseEntity<ResultPaginationDTO> getAllUser(

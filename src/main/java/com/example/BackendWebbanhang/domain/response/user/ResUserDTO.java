@@ -22,7 +22,7 @@ public class ResUserDTO {
     private Instant updatedAt;
     private Instant createdAt;
 
-    private RoleUser role; // Thêm trường này
+    private RoleUser role;
 
     @Getter
     @Setter

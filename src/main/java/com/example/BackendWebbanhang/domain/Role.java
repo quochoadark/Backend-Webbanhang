@@ -37,8 +37,6 @@ public class Role {
     private String createdBy;
     private String updatedBy;
 
-    // Quan hệ 1-N: Một role có nhiều user
-    // JsonIgnore để tránh vòng lặp vô hạn khi trả về API
     @OneToMany(mappedBy = "role")
     @JsonIgnore
     private List<User> users;

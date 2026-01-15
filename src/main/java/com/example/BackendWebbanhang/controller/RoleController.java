@@ -25,7 +25,6 @@ public class RoleController {
     @PostMapping("/roles")
     @ApiMessage("Create a role")
     public ResponseEntity<Role> create(@Valid @RequestBody Role r) throws IdInvalidException {
-        // Kiểm tra xem tên role đã tồn tại chưa
         if (this.roleService.existsByName(r.getName())) {
             throw new IdInvalidException("Role với name = " + r.getName() + " đã tồn tại");
         }

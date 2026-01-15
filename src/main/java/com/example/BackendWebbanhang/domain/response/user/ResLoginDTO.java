@@ -22,14 +22,14 @@ public class ResLoginDTO {
         private long id;
         private String email;
         private String name;
-        private RoleLogin role; // Thêm trường này
+        private RoleLogin role;
     }
 
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class RoleLogin { // Class phụ để chứa thông tin Role
+    public static class RoleLogin {
         private long id;
         private String name;
     }
